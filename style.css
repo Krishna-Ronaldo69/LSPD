@@ -363,7 +363,7 @@ a {
     border-radius: 1.5rem; /* Match card radius */
     overflow: hidden; /* Contains corners */
     width: 100%; /* Ensure section takes full width relative to container */
-    max-width: 700px; /* Limit width on larger screens */
+    /* max-width: 700px; --- REMOVED THIS LINE --- */
 }
 
 .collapsible {
