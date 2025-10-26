@@ -1,388 +1,373 @@
+/* --- GLOBAL FONT IMPORTS --- */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
-body{
-    background-color: black;
+/* --- GLOBAL & BODY STYLES --- */
+:root {
+  --accent-color: #00aaff; /* Vibrant Blue Accent */
+  --accent-color-light: #00c0ff;
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #c0c0c0;
+  --background-dark: #111;
+  --glass-bg: rgba(30, 40, 60, 0.35); /* Semi-transparent glass */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
+
+body {
+  /* Glassmorphism looks best on a non-black background */
+  background: linear-gradient(135deg, #1f2a40, #0d1222);
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-color-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  color: #00ff00;
+  color: var(--text-color-primary);
   text-align: center;
-  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
-  margin-top: 10px;
+  text-shadow: none; /* Removed neon glow */
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
-a{
+
+a {
   text-decoration: none;
-  color: #000
+  color: inherit; /* Inherit color from parent */
 }
-.warning{
+
+.warning {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  color: #00ff00;
+  color: var(--text-color-secondary);
   text-align: center;
-  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+  text-shadow: none; /* Removed neon glow */
+  margin-bottom: 20px;
 }
+
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center horizontally */
-    align-items: center;    /* Center vertically */
-    height: 100vh;          /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box; /* Ensures padding doesn't break layout */
 }
+
+/* --- MODERN GLASS CARD --- */
 .card {
-    --white: hsl(0, 0%, 100%);
-    --black: hsl(0, 13%, 9%);
-    --paragraph: hsl(0, 0%, 83%);
-    --line: hsl(0, 9%, 17%);
-    --primary: hsl(189, 92%, 58%);
-  
-    position: relative;
-  
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  
-    padding: 2rem;
-    width: 25rem;
-    background-color: hsla(240, 15%, 9%, 1);
-    background-image: radial-gradient(
-        at 88% 40%,
-        hsla(240, 15%, 9%, 1) 0px,
-        transparent 85%
-      ),
-      radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
-      radial-gradient(at 14% 26%, rgb(26, 20, 20) 0px, transparent 85%),
-      radial-gradient(at 0% 64%, hsl(0, 98%, 26%) 0px, transparent 85%),
-      radial-gradient(at 41% 94%, hsl(16, 97%, 36%) 0px, transparent 85%),
-      radial-gradient(at 100% 99%, hsl(17, 94%, 13%) 0px, transparent 85%);
-  
-    border-radius: 1rem;
-    box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
-    margin-bottom: 2rem;
-  }
-  
-  .card .card__border {
-    overflow: hidden;
-    pointer-events: none;
-  
-    position: absolute;
-    z-index: -10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-    background-image: linear-gradient(
-      0deg,
-      hsl(0, 0%, 100%) -50%,
-      hsl(0, 0%, 40%) 100%
-    );
-  
-    border-radius: 1rem;
-  }
-  
-  .card .card__border::before {
-    content: "";
-    pointer-events: none;
-  
-    position: fixed;
-    z-index: 200;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%), rotate(0deg);
-    transform-origin: left;
-  
-    width: 200%;
-    height: 10rem;
-    background-image: linear-gradient(
-      0deg,
-      hsla(0, 0%, 100%, 0) 0%,
-      hsl(0, 100%, 50%) 40%,
-      hsl(13, 100%, 50%) 60%,
-      hsla(0, 0%, 40%, 0) 100%
-    );
-  
-    animation: rotate 8s linear infinite;
-  }
-  
-  @keyframes rotate {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  .card .card_title__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: "Dancing Script", cursive;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .card .card_title__container .card_title {
-    font-size: 2.5rem;
-    color: var(--white);
-  }
-  
-  .card .card_title__container .card_paragraph {
-    margin-top: 0.25rem;
-    font-size: 1.5rem;
-    color: var(--paragraph);
-  }
-  
-  .card .line {
-    width: 100%;
-    height: 0.1rem;
-    background-color: var(--line);
-  
-    border: none;
-  }
-  
-  .card .card__list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-family: "Playpen Sans", cursive;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .card .card__list .card__list_item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .card .card__list .card__list_item .check {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    width: 1rem;
-    height: 1rem;
-    background-color: var(--primary);
-  
-    border-radius: 50%;
-  }
-  
-  .card .card__list .card__list_item .check .check_svg {
-    width: 0.75rem;
-    height: 0.75rem;
-  
-    fill: var(--black);
-  }
-  
-  .card .card__list .card__list_item .list_text {
-    font-size: 0.75rem;
-    color: var(--white);
-  }
-  
-  .card .button {
-    cursor: pointer;
-  
-    padding: 0.5rem;
-    width: 100%;
-    background-image: linear-gradient(
-      0deg,
-      hsl(24, 92%, 58%),
-      hsl(0, 98%, 26%) 100%
-    );
-  
-    font-size: 0.75rem;
-    color: b;
-  
-    border: 0;
-    border-radius: 9999px;
-    /* box-shadow: inset 0 -2px 25px -4px var(--white); */
-  }
-  .card .category {
-    cursor: pointer;
-  
-    padding: 0.5rem;
-    width: 100%;
-    background-image: linear-gradient(
-      0deg,
-      hsl(0, 0%, 0%),
-      hsl(0, 0%, 100%) 100%
-    );
-  
-    font-size: 0.75rem;
-    color: var(--white);
-  
-    border: 0;
-    border-radius: 9999px;
-    box-shadow: inset 0 -2px 25px -4px var(--white);
-  }
-/* Discord */
-/* This is an example, feel free to delete this code */
+  --white: #fff;
+  --black: #111;
+  --paragraph: #ccc;
+  --line: rgba(255, 255, 255, 0.1); /* Subtle glass line */
+  --primary: var(--accent-color); /* Use accent color */
 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  width: 25rem;
+  max-width: 90%; /* Responsive */
+
+  /* --- GLASSMORPHISM --- */
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: var(--glass-border);
+  border-radius: 1rem;
+  box-shadow: var(--glass-shadow);
+
+  margin-bottom: 2rem;
+}
+
+/* Removing the old complex border animation */
+.card .card__border,
+.card .card__border::before {
+  display: none;
+}
+
+.card .card_title__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Dancing Script", cursive;
+  font-weight: 400;
+}
+
+.card .card_title__container .card_title {
+  font-size: 2.5rem;
+  color: var(--white);
+}
+
+.card .card_title__container .card_paragraph {
+  margin-top: 0.25rem;
+  font-size: 1.5rem;
+  color: var(--paragraph);
+}
+
+.card .line {
+  width: 100%;
+  height: 1px; /* Thinner line */
+  background-color: var(--line);
+  border: none;
+}
+
+.card .card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: "Playpen Sans", cursive;
+  font-weight: 400;
+}
+
+.card .card__list .card__list_item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card .card__list .card__list_item .check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+.card .card__list .card__list_item .check .check_svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  fill: var(--black);
+}
+
+.card .card__list .card__list_item .list_text {
+  font-size: 0.75rem;
+  color: var(--white);
+}
+
+/* Modern Card Buttons */
+.card .button,
+.card .category {
+  cursor: pointer;
+  padding: 0.75rem;
+  width: 100%;
+  background: var(--accent-color);
+  font-size: 0.9rem;
+  color: var(--background-dark);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 8px; /* Modern radius */
+  transition: background-color 0.3s ease;
+  box-shadow: none; /* Removed old shadow */
+}
+
+.card .button:hover {
+  background-color: var(--accent-color-light);
+}
+
+/* Secondary Button Style */
+.card .category {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.card .category:hover {
+  background: rgba(0, 170, 255, 0.1);
+}
+
+/* --- DISCORD TOOLTIP (Revamped) --- */
 .tooltip-container {
-    margin-bottom: 2vh;
-    position: relative;
-    background-color: #ff7f7f;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 17px;
-    /*padding: 0.7em 1.8em;*/
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    fill: #fff;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 25px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
-  .tooltip-container .borde-back {
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    box-shadow: none;
-  }
-  
-  .tooltip-container .icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    background-color: #f25858;
-    cursor: pointer;
-  }
-  
-  .tooltip {
-    position: absolute;
-    top: -2;
-    left: -45px; 
-    transform: translateX(
-      -32%
-    ); 
-    width: 160px;
-    height: 52px;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.6s;
-    border-radius: 50px;
-    background-color: #ff7f7f;
-    background-image: linear-gradient(
-      -90deg,
-      #ff7f7f 0%,
-      #f25858 75%,
-      #f25858 100%
-    );
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    padding-right: 16px;
-    color: #fff;
-    font-size: 18px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-  }
-  
-  .tooltip::before {
-    position: absolute;
-    content: "";
-    height: 0.6em;
-    width: 0.6em;
-    right: -0.2em; 
-    top: 50%; 
-    transform: translateY(-50%) rotate(45deg); 
-    background: var(--background);
-  }
-  
-  .tooltip-container:hover .tooltip {
-    left: 100%; 
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    z-index: -10;
-  }
-  .tooltip-container:hover {
-    transform: translateX(-50px);
-    transition: 0.5s linear;
-  }
-  
-  .neon-button {
-    background-color: #1a1a1a;
-    border: 2px solid #00ff00;
-    color: #00ff00;
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+  margin-bottom: 2vh;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 17px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--background-dark);
+  background-color: var(--accent-color); /* Use accent color */
+  border: 1px solid var(--accent-color-light);
+  box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
 }
 
-.neon-button:hover {
-    background-color: #00ff00;
-    color: #1a1a1a;
-    box-shadow: 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 25px #00ff00;
+.tooltip-container .borde-back {
+  display: none; /* Removed extra border */
 }
 
+.tooltip-container .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background-color: transparent; /* Icon container is transparent */
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  left: 120%; /* Position to the right */
+  transform: translateY(-50%);
+  width: 160px;
+  height: auto;
+  padding: 10px 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  border-radius: 8px; /* Modern radius */
+  background: var(--background-dark); /* Dark tooltip */
+  border: var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centered text */
+  color: #fff;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  z-index: 100;
+}
+
+/* Removed complex hover animation */
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- MODERN GLASS INPUTS & BUTTONS --- */
 .neon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
 }
 
 .neon-input {
-    background-color: #1a1a1a;
-    border: 2px solid #00ff00;
-    color: #00ff00;
-    padding: 10px;
-    margin: 5px 0;
-    width: 80%;
-    text-align: center;
-    font-size: 1rem;
-    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+  background: rgba(0, 0, 0, 0.2); /* Dark glass */
+  border: var(--glass-border);
+  color: var(--accent-color); /* Accent color for the command text */
+  padding: 12px 15px;
+  margin: 5px 0;
+  width: 80%;
+  text-align: left; /* Better for reading commands */
+  font-size: 0.9rem;
+  font-family: 'Courier New', Courier, monospace; /* Keep code-like */
+  box-shadow: none; /* Removed neon glow */
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
+.neon-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.5); /* Subtle focus glow */
+}
+
+.neon-button {
+  background: var(--accent-color);
   border: none;
+  color: var(--background-dark);
+  padding: 12px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: none; /* Removed neon glow */
+  border-radius: 8px;
+}
+
+.neon-button:hover {
+  background: var(--accent-color-light);
+  color: var(--background-dark);
+  box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3); /* Subtle shadow */
+}
+
+/* --- MODERN GLASS COLLAPSIBLE SECTIONS --- */
+.collapsible {
+  background: var(--glass-bg);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: var(--text-color-primary);
+  cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
+  border: var(--glass-border);
+  border-top: none; /* Avoid double borders */
   text-align: left;
   outline: none;
-  font-size: 15px;
-  text-align: center;
+  font-size: 1.1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
-.active, .collapsible:hover {
-  background-color: #555;
+/* Round the top corners of the first button */
+.collapsible-section:first-of-type .collapsible {
+  border-top: var(--glass-border);
+  border-radius: 8px 8px 0 0;
+}
+
+/* Round the bottom corners of the last button IF it's not active */
+.collapsible-section:last-of-type .collapsible:not(.active) {
+  border-radius: 0 0 8px 8px;
+}
+
+.active,
+.collapsible:hover {
+  background: rgba(40, 50, 70, 0.5); /* Darker glass on hover/active */
 }
 
 .content {
-  padding: 0 18px;
+  padding: 15px 18px;
   display: none;
   overflow: hidden;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.3); /* Dark transparent bg */
+  border-left: var(--glass-border);
+  border-right: var(--glass-border);
 }
 
-@media (min-width: 600px) {
-    .neon-container {
-        flex-direction: row;
-        justify-content: center;
-    }
+/* Round the bottom corners of the last content box */
+.collapsible-section:last-of-type .content {
+  border-bottom: var(--glass-border);
+  border-radius: 0 0 8px 8px;
+}
 
-    .neon-input {
-        width: 50vw;
-        margin-right: 10px;
-    }
+/* --- RESPONSIVE LAYOUT --- */
+@media (min-width: 768px) {
+  .neon-container {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .neon-input {
+    width: 60vw;
+    max-width: 600px; /* Max width for large screens */
+    margin-right: 10px;
+    margin-bottom: 5px; /* Align with button */
+  }
+
+  .neon-button {
+    margin: 5px 0 5px 10px;
+  }
 }
