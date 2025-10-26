@@ -186,70 +186,81 @@ a {
   background: rgba(0, 170, 255, 0.1);
 }
 
-/* --- DISCORD TOOLTIP (Revamped) --- */
+/* --- DISCORD TOOLTIP (Corrected Positioning) --- */
 .tooltip-container {
   margin-bottom: 2vh;
-  position: relative;
+  position: relative; /* Establish positioning context */
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 17px;
-  width: 50px;
+  width: 50px; /* Size of the icon area */
   height: 50px;
-  border-radius: 50%;
+  display: flex; /* Helps center the icon span */
+  align-items: center;
+  justify-content: center;
+  /* Removed background/border from container itself */
+}
+
+/* Styles for the Icon Trigger */
+.tooltip-container .tooltip { /* This span holds the icon */
   display: flex;
   align-items: center;
   justify-content: center;
-  fill: var(--background-dark);
-  background-color: var(--accent-color); /* Use accent color */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--accent-color); /* Blue circle */
+  fill: var(--background-dark); /* Icon color */
   border: 1px solid var(--accent-color-light);
   box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+  transition: transform 0.3s ease;
+  z-index: 10; /* Keep icon above popup */
 }
 
-.tooltip-container .borde-back {
-  display: none; /* Removed extra border */
-}
-
-.tooltip-container .icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  background-color: transparent; /* Icon container is transparent */
-  cursor: pointer;
-}
-
-.tooltip {
+/* Styles for the Text Popup */
+.tooltip-container .text {
   position: absolute;
   top: 50%;
-  left: 120%; /* Position to the right */
-  transform: translateY(-50%);
-  width: 160px;
+  left: calc(100% + 15px); /* Position 15px to the right of the container */
+  transform: translateY(-50%); /* Vertically center */
+  width: auto; /* Auto width based on content */
+  white-space: nowrap; /* Prevent text wrapping */
   height: auto;
   padding: 10px 15px;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s ease;
-  border-radius: 8px; /* Modern radius */
-  background: var(--background-dark); /* Dark tooltip */
+  transition: opacity 0.3s ease, left 0.3s ease; /* Smooth transition */
+  border-radius: 8px;
+  background: var(--background-dark);
   border: var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centered text */
   color: #fff;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  z-index: 100;
+  z-index: 100; /* Ensure popup is above other elements */
+  box-shadow: var(--glass-shadow);
 }
 
-/* Removed complex hover animation */
-.tooltip-container:hover .tooltip {
+/* Show popup on container hover */
+.tooltip-container:hover .text {
   opacity: 1;
   pointer-events: auto;
+  left: calc(100% + 20px); /* Slightly move popup further right on hover */
 }
+
+/* Optional: Slight scale effect on icon hover */
+.tooltip-container:hover .tooltip {
+    transform: scale(1.1);
+}
+
+/* Ensure the SVG icon itself displays correctly */
+.tooltip-container .icon {
+  width: 23px; /* Adjust size as needed */
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Removed old .borde-back styles */
 
 /* --- MODERN GLASS INPUTS & BUTTONS --- */
 .neon-container {
@@ -371,3 +382,4 @@ a {
     margin: 5px 0 5px 10px;
   }
 }
+
