@@ -1,5 +1,5 @@
 /* --- GLOBAL FONT IMPORTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap'); /* Note: Tinos was added here, Montserrat removed from other imports */
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap'); /* Font for code inputs */
@@ -25,32 +25,29 @@
   --button-text-color: #111; /* Dark text for light buttons */
 }
 
+/* --- CORRECTED BODY & CONTAINER LAYOUT --- */
 body {
   background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
   font-family: "Montserrat", sans-serif;
   color: var(--text-color-primary);
   min-height: 100vh;
   margin: 0;
-  padding: 0;
-  display: flex; /* Centering content */
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto; /* Allow scrolling if content is long */
-  padding-top: 50px; /* Add some top padding */
-  padding-bottom: 50px; /* Add some bottom padding */
-  box-sizing: border-box; /* Include padding in height calculations */
+  padding: 50px 20px; /* Add padding directly to body */
+  box-sizing: border-box;
+  /* Removed flex properties that caused horizontal layout */
 }
 
-/* Adjust the main .container */
 .container {
-  display: flex;
-  flex-direction: column;
+  display: block; /* Change back to block to allow natural stacking */
   width: 100%;
   max-width: 800px; /* Constrain width */
-  padding: 20px;
+  margin: 0 auto; /* Center the container horizontally */
   box-sizing: border-box;
-  align-items: center; /* Center items like the card */
+  /* Removed padding, now handled by body */
+  /* Remove align-items if present */
 }
+
+/* --- REST OF STYLES --- */
 
 h1 {
   font-family: "Montserrat", sans-serif;
@@ -74,7 +71,7 @@ a {
   text-align: center;
   text-shadow: none;
   margin-bottom: 20px;
-  padding: 0 10px; /* Add some padding */
+  padding: 0 10px;
 }
 
 
@@ -94,14 +91,16 @@ a {
   width: 25rem;
   max-width: 90%;
   box-sizing: border-box;
+  margin-left: auto; /* Center card if container is wider */
+  margin-right: auto; /* Center card if container is wider */
 
   /* --- STRONGER GLASSMORPHISM --- */
-  background: var(--glass-bg-lighter); /* Use updated lighter glass */
-  backdrop-filter: blur(35px); /* STRONGER blur */
+  background: var(--glass-bg-lighter);
+  backdrop-filter: blur(35px);
   -webkit-backdrop-filter: blur(35px);
-  border: var(--glass-border); /* Use updated border */
+  border: var(--glass-border);
   border-radius: 1.5rem;
-  box-shadow: var(--glass-shadow); /* Use updated shadow */
+  box-shadow: var(--glass-shadow);
 
   margin-bottom: 2rem;
 }
@@ -117,20 +116,20 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  font-family: "Montserrat", sans-serif; /* Standardized Font */
-  font-weight: 700; /* Bolder */
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }
 
 .card .card_title__container .card_title {
-  font-size: 1.8rem; /* Adjusted Size */
+  font-size: 1.8rem;
   color: var(--white);
 }
 
 .card .card_title__container .card_paragraph {
-  margin-top: 0.1rem; /* Reduced margin */
-  font-size: 1rem; /* Adjusted Size */
+  margin-top: 0.1rem;
+  font-size: 1rem;
   color: var(--paragraph);
-  font-weight: 400; /* Normal weight */
+  font-weight: 400;
 }
 
 .card .line {
@@ -144,7 +143,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  font-family: "Montserrat", sans-serif; /* Standardized Font */
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
 
@@ -162,17 +161,17 @@ a {
   height: 1rem;
   background-color: var(--primary);
   border-radius: 50%;
-  flex-shrink: 0; /* Prevent checkmark from shrinking */
+  flex-shrink: 0;
 }
 
 .card .card__list .card__list_item .check .check_svg {
   width: 0.75rem;
   height: 0.75rem;
-  fill: var(--button-text-color); /* Match button text color */
+  fill: var(--button-text-color);
 }
 
 .card .card__list .card__list_item .list_text {
-  font-size: 0.9rem; /* Adjusted size */
+  font-size: 0.9rem;
   color: var(--white);
 }
 
@@ -190,7 +189,8 @@ a {
   border-radius: 10px;
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  margin-top: 5px; /* Add some space between buttons */
+  margin-top: 5px;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 .card .button:hover {
@@ -212,7 +212,8 @@ a {
   font-weight: 700;
   border-radius: 10px;
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-   margin-top: 5px; /* Add some space between buttons */
+   margin-top: 5px;
+   box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 .card .category:hover {
@@ -224,7 +225,7 @@ a {
 
 /* --- DISCORD TOOLTIP (Corrected Positioning) --- */
 .tooltip-container {
-  margin-top: 1rem; /* Added margin-top instead of bottom */
+  margin-top: 1rem;
   position: relative;
   cursor: pointer;
   width: 50px;
@@ -232,6 +233,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto; /* Center tooltip container if .container is wider */
+  margin-right: auto; /* Center tooltip container if .container is wider */
 }
 
 /* Styles for the Icon Trigger */
@@ -242,8 +245,8 @@ a {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--button-color); /* Match button color */
-  fill: var(--button-text-color); /* Match button text color */
+  background-color: var(--button-color);
+  fill: var(--button-text-color);
   border: 1px solid var(--button-hover-color);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
@@ -264,7 +267,7 @@ a {
   pointer-events: none;
   transition: opacity 0.3s ease, left 0.3s ease;
   border-radius: 8px;
-  background: #222; /* Darker popup background */
+  background: #222;
   border: var(--glass-border);
   color: #fff;
   font-size: 16px;
@@ -361,8 +364,10 @@ a {
     box-shadow: var(--glass-shadow);
     border-radius: 1.5rem; /* Match card radius */
     overflow: hidden; /* Contains corners */
-    width: 100%; /* Ensure section takes full width */
+    width: 100%; /* Ensure section takes full width relative to container */
     max-width: 700px; /* Limit width on larger screens */
+    margin-left: auto; /* Center collapsible sections if container is wider */
+    margin-right: auto; /* Center collapsible sections if container is wider */
 }
 
 .collapsible {
@@ -398,7 +403,7 @@ a {
 
 .content {
   padding: 15px 25px;
-  display: none;
+  display: none; /* Keep hidden initially */
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.15); /* Updated background */
   border: none;
@@ -432,3 +437,4 @@ a {
     margin: 0; /* Remove default margins */
   }
 }
+
