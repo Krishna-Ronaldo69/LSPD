@@ -38,13 +38,13 @@ body {
 }
 
 .container {
-  display: block; /* Change back to block to allow natural stacking */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally (like the card and collapsible sections) */
   width: 100%;
   max-width: 800px; /* Constrain width */
-  margin: 0 auto; /* Center the container horizontally */
+  margin: 0 auto; /* Center the container itself horizontally */
   box-sizing: border-box;
-  /* Removed padding, now handled by body */
-  /* Remove align-items if present */
 }
 
 /* --- REST OF STYLES --- */
@@ -57,6 +57,7 @@ h1 {
   text-shadow: none;
   margin-top: 20px;
   margin-bottom: 10px;
+  width: 100%; /* Ensure h1 takes full width within container */
 }
 
 a {
@@ -72,6 +73,7 @@ a {
   text-shadow: none;
   margin-bottom: 20px;
   padding: 0 10px;
+  width: 100%; /* Ensure warning takes full width */
 }
 
 
@@ -88,11 +90,9 @@ a {
   flex-direction: column;
   gap: 1.2rem;
   padding: 2.5rem;
-  width: 25rem;
-  max-width: 90%;
+  width: 25rem; /* Specific width for the card */
+  max-width: 90%; /* Ensure it's responsive */
   box-sizing: border-box;
-  margin-left: auto; /* Center card if container is wider */
-  margin-right: auto; /* Center card if container is wider */
 
   /* --- STRONGER GLASSMORPHISM --- */
   background: var(--glass-bg-lighter);
@@ -102,7 +102,7 @@ a {
   border-radius: 1.5rem;
   box-shadow: var(--glass-shadow);
 
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* Space below the card */
 }
 
 /* Removing the old complex border animation */
@@ -190,7 +190,7 @@ a {
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   margin-top: 5px;
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  box-sizing: border-box;
 }
 
 .card .button:hover {
@@ -213,7 +213,7 @@ a {
   border-radius: 10px;
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
    margin-top: 5px;
-   box-sizing: border-box; /* Ensure padding doesn't affect width */
+   box-sizing: border-box;
 }
 
 .card .category:hover {
@@ -233,8 +233,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto; /* Center tooltip container if .container is wider */
-  margin-right: auto; /* Center tooltip container if .container is wider */
 }
 
 /* Styles for the Icon Trigger */
@@ -314,11 +312,11 @@ a {
   color: var(--text-color-primary);
   padding: 12px 18px;
   margin: 5px 0;
-  width: 100%; /* Make input take full width */
-  box-sizing: border-box; /* Include padding in width */
+  width: 100%;
+  box-sizing: border-box;
   text-align: left;
   font-size: 1rem;
-  font-family: 'Roboto Mono', monospace; /* Use imported code font */
+  font-family: 'Roboto Mono', monospace;
   border-radius: 10px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
@@ -342,13 +340,13 @@ a {
   padding: 12px 20px;
   margin: 10px;
   cursor: pointer;
-  font-size: 0.9rem; /* Slightly smaller button text */
+  font-size: 0.9rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  flex-shrink: 0; /* Prevent button from shrinking */
+  flex-shrink: 0;
 }
 
 .neon-button:hover {
@@ -366,8 +364,6 @@ a {
     overflow: hidden; /* Contains corners */
     width: 100%; /* Ensure section takes full width relative to container */
     max-width: 700px; /* Limit width on larger screens */
-    margin-left: auto; /* Center collapsible sections if container is wider */
-    margin-right: auto; /* Center collapsible sections if container is wider */
 }
 
 .collapsible {
