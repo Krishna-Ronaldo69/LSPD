@@ -2,20 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap'); /* <<<--- ADD THIS LINE ---<<< */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap'); /* Font for code inputs */
 
 /* --- GLOBAL & BODY STYLES --- */
 :root {
-  --accent-color: #00aaff; /* Keep a vibrant blue for highlights */
+  --accent-color: #00aaff; /* Vibrant Blue Accent */
   --accent-color-light: #00c0ff;
   --text-color-primary: #f0f0f0; /* Slightly off-white for main text */
   --text-color-secondary: #a0a0a0; /* Lighter secondary text */
 
-  /* New Glassmorphism-focused colors */
-  --glass-bg-lighter: rgba(255, 255, 255, 0.15); /* Very light, very transparent for main glass */
-  --glass-bg-darker: rgba(255, 255, 255, 0.08); /* Slightly less transparent for content */
-  --glass-border: 1px solid rgba(255, 255, 255, 0.2); /* Slightly more visible border */
-  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05); /* Subtler, layered shadow */
+  /* Updated Glassmorphism colors for stronger effect */
+  --glass-bg-lighter: rgba(255, 255, 255, 0.1); /* MORE transparent */
+  --glass-bg-darker: rgba(255, 255, 255, 0.05); /* MORE transparent */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.18); /* Slightly adjusted border */
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25); /* Softer shadow */
 
   --background-gradient-start: #2a3d54; /* Darker blue-grey background */
   --background-gradient-end: #151f2e; /* Even darker blue-grey */
@@ -24,6 +24,7 @@
   --button-hover-color: #00c0ff;
   --button-text-color: #111; /* Dark text for light buttons */
 }
+
 body {
   background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
   font-family: "Montserrat", sans-serif;
@@ -40,15 +41,15 @@ body {
   box-sizing: border-box; /* Include padding in height calculations */
 }
 
-/* Adjust the main .container to remove its own flex centering, as body now handles it */
+/* Adjust the main .container */
 .container {
   display: flex;
   flex-direction: column;
-  /* Removed justify-content: center; align-items: center; */
   width: 100%;
-  max-width: 800px; /* Constrain width for better look */
+  max-width: 800px; /* Constrain width */
   padding: 20px;
   box-sizing: border-box;
+  align-items: center; /* Center items like the card */
 }
 
 h1 {
@@ -56,14 +57,14 @@ h1 {
   font-weight: 600;
   color: var(--text-color-primary);
   text-align: center;
-  text-shadow: none; /* Removed neon glow */
+  text-shadow: none;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 a {
   text-decoration: none;
-  color: inherit; /* Inherit color from parent */
+  color: inherit;
 }
 
 .warning {
@@ -71,42 +72,36 @@ a {
   font-weight: 400;
   color: var(--text-color-secondary);
   text-align: center;
-  text-shadow: none; /* Removed neon glow */
+  text-shadow: none;
   margin-bottom: 20px;
+  padding: 0 10px; /* Add some padding */
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box; /* Ensures padding doesn't break layout */
-}
 
 /* --- MODERN GLASS CARD --- */
 .card {
-  --white: var(--text-color-primary); /* Use new root variables */
+  --white: var(--text-color-primary);
+  --black: #111;
   --paragraph: var(--text-color-secondary);
-  --line: rgba(255, 255, 255, 0.15); /* Slightly more visible line */
+  --line: rgba(255, 255, 255, 0.15);
+  --primary: var(--accent-color);
 
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem; /* Slightly more spacing */
-  padding: 2.5rem; /* More generous padding */
+  gap: 1.2rem;
+  padding: 2.5rem;
   width: 25rem;
   max-width: 90%;
-  box-sizing: border-box; /* Crucial for consistent sizing */
+  box-sizing: border-box;
 
   /* --- STRONGER GLASSMORPHISM --- */
-  background: var(--glass-bg-lighter); /* Use lighter glass background */
-  backdrop-filter: blur(25px); /* Much stronger blur */
-  -webkit-backdrop-filter: blur(25px);
-  border: var(--glass-border);
-  border-radius: 1.5rem; /* More rounded corners */
-  box-shadow: var(--glass-shadow);
+  background: var(--glass-bg-lighter); /* Use updated lighter glass */
+  backdrop-filter: blur(35px); /* STRONGER blur */
+  -webkit-backdrop-filter: blur(35px);
+  border: var(--glass-border); /* Use updated border */
+  border-radius: 1.5rem;
+  box-shadow: var(--glass-shadow); /* Use updated shadow */
 
   margin-bottom: 2rem;
 }
@@ -122,24 +117,25 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  font-family: "Dancing Script", cursive;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif; /* Standardized Font */
+  font-weight: 700; /* Bolder */
 }
 
 .card .card_title__container .card_title {
-  font-size: 2.5rem;
+  font-size: 1.8rem; /* Adjusted Size */
   color: var(--white);
 }
 
 .card .card_title__container .card_paragraph {
-  margin-top: 0.25rem;
-  font-size: 1.5rem;
+  margin-top: 0.1rem; /* Reduced margin */
+  font-size: 1rem; /* Adjusted Size */
   color: var(--paragraph);
+  font-weight: 400; /* Normal weight */
 }
 
 .card .line {
   width: 100%;
-  height: 1px; /* Thinner line */
+  height: 1px;
   background-color: var(--line);
   border: none;
 }
@@ -148,7 +144,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  font-family: "Playpen Sans", cursive;
+  font-family: "Montserrat", sans-serif; /* Standardized Font */
   font-weight: 400;
 }
 
@@ -166,38 +162,40 @@ a {
   height: 1rem;
   background-color: var(--primary);
   border-radius: 50%;
+  flex-shrink: 0; /* Prevent checkmark from shrinking */
 }
 
 .card .card__list .card__list_item .check .check_svg {
   width: 0.75rem;
   height: 0.75rem;
-  fill: var(--black);
+  fill: var(--button-text-color); /* Match button text color */
 }
 
 .card .card__list .card__list_item .list_text {
-  font-size: 0.75rem;
+  font-size: 0.9rem; /* Adjusted size */
   color: var(--white);
 }
 
 /* Modern Card Buttons */
 .card .button {
   cursor: pointer;
-  padding: 0.9rem 1.5rem; /* More padding */
+  padding: 0.9rem 1.5rem;
   width: 100%;
-  background: var(--button-color); /* Use new button color */
-  font-size: 1rem; /* Slightly larger font */
-  color: var(--button-text-color); /* Dark text for light button */
+  background: var(--button-color);
+  font-size: 1rem;
+  color: var(--button-text-color);
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  border: none; /* No border for primary buttons */
-  border-radius: 10px; /* More modern radius */
+  border: none;
+  border-radius: 10px;
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 5px; /* Add some space between buttons */
 }
 
 .card .button:hover {
   background-color: var(--button-hover-color);
-  transform: translateY(-2px); /* Slight lift effect */
+  transform: translateY(-2px);
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -207,56 +205,33 @@ a {
   padding: 0.9rem 1.5rem;
   width: 100%;
   background: transparent;
-  border: 1px solid var(--accent-color); /* Subtle accent border */
+  border: 1px solid var(--accent-color);
   color: var(--accent-color);
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   border-radius: 10px;
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+   margin-top: 5px; /* Add some space between buttons */
 }
 
 .card .category:hover {
-  background: rgba(0, 170, 255, 0.15); /* More transparent hover */
+  background: rgba(0, 170, 255, 0.15);
   border-color: var(--accent-color-light);
   color: var(--accent-color-light);
 }
 
-/* ... other styles ... */
-
-.neon-button { /* Use for input buttons */
-  background: var(--button-color);
-  border: none;
-  color: var(--button-text-color);
-  padding: 12px 25px; /* More padding */
-  margin: 10px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Consistent shadow */
-  border-radius: 10px;
-}
-
-.neon-button:hover {
-  background: var(--button-hover-color);
-  color: var(--button-text-color);
-  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
 
 /* --- DISCORD TOOLTIP (Corrected Positioning) --- */
 .tooltip-container {
-  margin-bottom: 2vh;
-  position: relative; /* Establish positioning context */
+  margin-top: 1rem; /* Added margin-top instead of bottom */
+  position: relative;
   cursor: pointer;
-  width: 50px; /* Size of the icon area */
+  width: 50px;
   height: 50px;
-  display: flex; /* Helps center the icon span */
+  display: flex;
   align-items: center;
   justify-content: center;
-  /* Removed background/border from container itself */
 }
 
 /* Styles for the Icon Trigger */
@@ -267,35 +242,35 @@ a {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--button-color); /* Use button color for consistency */
-  fill: var(--button-text-color); /* Dark text for light icon */
-  border: 1px solid var(--button-hover-color); /* Lighter border */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtler shadow */
+  background-color: var(--button-color); /* Match button color */
+  fill: var(--button-text-color); /* Match button text color */
+  border: 1px solid var(--button-hover-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  z-index: 10; /* Keep icon above popup */
+  z-index: 10;
 }
 
 /* Styles for the Text Popup */
 .tooltip-container .text {
   position: absolute;
   top: 50%;
-  left: calc(100% + 15px); /* Position 15px to the right of the container */
-  transform: translateY(-50%); /* Vertically center */
-  width: auto; /* Auto width based on content */
-  white-space: nowrap; /* Prevent text wrapping */
+  left: calc(100% + 15px);
+  transform: translateY(-50%);
+  width: auto;
+  white-space: nowrap;
   height: auto;
   padding: 10px 15px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease, left 0.3s ease; /* Smooth transition */
+  transition: opacity 0.3s ease, left 0.3s ease;
   border-radius: 8px;
-  background: var(--background-dark);
+  background: #222; /* Darker popup background */
   border: var(--glass-border);
   color: #fff;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  z-index: 100; /* Ensure popup is above other elements */
+  z-index: 100;
   box-shadow: var(--glass-shadow);
 }
 
@@ -303,7 +278,7 @@ a {
 .tooltip-container:hover .text {
   opacity: 1;
   pointer-events: auto;
-  left: calc(100% + 20px); /* Slightly move popup further right on hover */
+  left: calc(100% + 20px);
 }
 
 /* Optional: Slight scale effect on icon hover */
@@ -313,14 +288,13 @@ a {
 
 /* Ensure the SVG icon itself displays correctly */
 .tooltip-container .icon {
-  width: 23px; /* Adjust size as needed */
+  width: 23px;
   height: 23px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Removed old .borde-back styles */
 
 /* --- MODERN GLASS INPUTS & BUTTONS --- */
 .neon-container {
@@ -332,20 +306,21 @@ a {
 }
 
 .neon-input {
-  background: rgba(255, 255, 255, 0.08); /* Lighter, more transparent input background */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtler border */
-  color: var(--text-color-primary); /* Primary text color for input */
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-color-primary);
   padding: 12px 18px;
   margin: 5px 0;
-  width: 80%;
+  width: 100%; /* Make input take full width */
+  box-sizing: border-box; /* Include padding in width */
   text-align: left;
-  font-size: 1rem; /* Slightly larger font */
-  font-family: 'Roboto Mono', monospace; /* A common, clean monospace font, remember to import it */
-  border-radius: 10px; /* More rounded corners */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  font-family: 'Roboto Mono', monospace; /* Use imported code font */
+  border-radius: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.neon-input::placeholder { /* Style for placeholder text */
+.neon-input::placeholder {
   color: var(--text-color-secondary);
   opacity: 0.7;
 }
@@ -353,102 +328,107 @@ a {
 .neon-input:focus {
   outline: none;
   border-color: var(--accent-color);
-  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4); /* More prominent focus glow */
-  background: rgba(255, 255, 255, 0.12); /* Slightly lighter on focus */
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.neon-button {
-  background: var(--accent-color);
+.neon-button { /* Use for input copy buttons */
+  background: var(--button-color);
   border: none;
-  color: var(--background-dark);
+  color: var(--button-text-color);
   padding: 12px 20px;
   margin: 10px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Slightly smaller button text */
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: none; /* Removed neon glow */
-  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  flex-shrink: 0; /* Prevent button from shrinking */
 }
 
 .neon-button:hover {
-  background: var(--accent-color-light);
-  color: var(--background-dark);
-  box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3); /* Subtle shadow */
+  background: var(--button-hover-color);
+  color: var(--button-text-color);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
 /* --- MODERN GLASS COLLAPSIBLE SECTIONS --- */
-.collapsible-section { /* <<<--- Make sure this rule is included ---<<< */
-    margin-bottom: 15px; /* Add some space between sections */
-    box-shadow: var(--glass-shadow); /* Apply shadow to the whole section */
+.collapsible-section {
+    margin-bottom: 15px;
+    box-shadow: var(--glass-shadow);
     border-radius: 1.5rem; /* Match card radius */
-    overflow: hidden; /* Crucial to contain rounded corners */
+    overflow: hidden; /* Contains corners */
+    width: 100%; /* Ensure section takes full width */
+    max-width: 700px; /* Limit width on larger screens */
 }
 
 .collapsible {
-  background: var(--glass-bg-darker); /* Use slightly darker glass background */
-  backdrop-filter: blur(10px); /* Medium blur for collapsible headers */
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--glass-bg-darker); /* Updated */
+  backdrop-filter: blur(20px); /* STRONGER blur */
+  -webkit-backdrop-filter: blur(20px);
   color: var(--text-color-primary);
   cursor: pointer;
-  padding: 18px 25px; /* More padding */
+  padding: 18px 25px;
   width: 100%;
-  border: none; /* No individual border, let section handle it */
-  text-align: center; /* Centered text */
+  border: none;
+  text-align: center; /* Centered */
   outline: none;
-  font-size: 1.15rem; /* Slightly larger font */
+  font-size: 1.15rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   transition: background-color 0.3s ease, color 0.3s ease;
-  border-bottom: var(--glass-border); /* Separator line */
+  border-bottom: var(--glass-border); /* Separator */
+  box-sizing: border-box; /* Include padding in width */
 }
 
-/* Remove old individual border-radius rules, overflow:hidden on section handles it */
+/* Remove old individual border-radius rules */
 .collapsible-section:first-of-type .collapsible,
 .collapsible-section:last-of-type .collapsible:not(.active) {
-    border-radius: 0; /* Handled by parent */
+    border-radius: 0;
 }
 
 .active,
 .collapsible:hover {
-  background: rgba(255, 255, 255, 0.15); /* Lighter hover/active state */
-  color: var(--accent-color-light); /* Accent color for active/hovered text */
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--accent-color-light);
 }
 
 .content {
-  padding: 15px 25px; /* Match padding */
+  padding: 15px 25px;
   display: none;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.2); /* Darker transparent background for content */
-  /* Remove individual borders, let section and collapsible border handle it */
+  background-color: rgba(0, 0, 0, 0.15); /* Updated background */
   border: none;
+  box-sizing: border-box; /* Include padding */
 }
 
 /* Remove old individual border-radius rules */
 .collapsible-section:last-of-type .content {
-    border-radius: 0; /* Handled by parent */
+    border-radius: 0;
 }
 
 /* --- RESPONSIVE LAYOUT --- */
 @media (min-width: 768px) {
   .neon-container {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between; /* Space input and button */
+    align-items: center; /* Align items vertically */
     width: 100%;
   }
 
   .neon-input {
-    width: 60vw;
-    max-width: 600px; /* Max width for large screens */
-    margin-right: 10px;
-    margin-bottom: 5px; /* Align with button */
+    flex-grow: 1; /* Allow input to take available space */
+    margin-right: 15px; /* Add space between input and button */
+    margin-bottom: 0; /* Remove bottom margin */
+    margin-left: 0; /* Remove left margin if any */
+    margin-top: 0; /* Remove top margin if any */
+    width: auto; /* Let flexbox handle width */
   }
 
   .neon-button {
-    margin: 5px 0 5px 10px;
+    margin: 0; /* Remove default margins */
   }
 }
-
-
-
