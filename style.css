@@ -324,13 +324,15 @@ a {
   width: 100%;
   border: var(--glass-border);
   border-top: none; /* Avoid double borders */
-  text-align: left;
+  text-align: center; /* <<<--- ADD THIS LINE ---<<< */
   outline: none;
   font-size: 1.1rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   transition: background-color 0.3s ease;
 }
+
+/* ... (rest of the collapsible styles remain the same) ... */
 
 /* Round the top corners of the first button */
 .collapsible-section:first-of-type .collapsible {
@@ -382,4 +384,5 @@ a {
     margin: 5px 0 5px 10px;
   }
 }
+
 
