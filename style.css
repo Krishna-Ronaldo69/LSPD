@@ -2,27 +2,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap'); /* <<<--- ADD THIS LINE ---<<< */
 
 /* --- GLOBAL & BODY STYLES --- */
 :root {
-  --accent-color: #00aaff; /* Vibrant Blue Accent */
+  --accent-color: #00aaff; /* Keep a vibrant blue for highlights */
   --accent-color-light: #00c0ff;
-  --text-color-primary: #ffffff;
-  --text-color-secondary: #c0c0c0;
-  --background-dark: #111;
-  --glass-bg: rgba(30, 40, 60, 0.35); /* Semi-transparent glass */
-  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
+  --text-color-primary: #f0f0f0; /* Slightly off-white for main text */
+  --text-color-secondary: #a0a0a0; /* Lighter secondary text */
 
+  /* New Glassmorphism-focused colors */
+  --glass-bg-lighter: rgba(255, 255, 255, 0.15); /* Very light, very transparent for main glass */
+  --glass-bg-darker: rgba(255, 255, 255, 0.08); /* Slightly less transparent for content */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.2); /* Slightly more visible border */
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05); /* Subtler, layered shadow */
+
+  --background-gradient-start: #2a3d54; /* Darker blue-grey background */
+  --background-gradient-end: #151f2e; /* Even darker blue-grey */
+
+  --button-color: #00aaff; /* Your accent blue */
+  --button-hover-color: #00c0ff;
+  --button-text-color: #111; /* Dark text for light buttons */
+}
 body {
-  /* Glassmorphism looks best on a non-black background */
-  background: linear-gradient(135deg, #1f2a40, #0d1222);
+  background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
   font-family: "Montserrat", sans-serif;
   color: var(--text-color-primary);
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  display: flex; /* Centering content */
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Allow scrolling if content is long */
+  padding-top: 50px; /* Add some top padding */
+  padding-bottom: 50px; /* Add some bottom padding */
+  box-sizing: border-box; /* Include padding in height calculations */
+}
+
+/* Adjust the main .container to remove its own flex centering, as body now handles it */
+.container {
+  display: flex;
+  flex-direction: column;
+  /* Removed justify-content: center; align-items: center; */
+  width: 100%;
+  max-width: 800px; /* Constrain width for better look */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -61,26 +87,25 @@ a {
 
 /* --- MODERN GLASS CARD --- */
 .card {
-  --white: #fff;
-  --black: #111;
-  --paragraph: #ccc;
-  --line: rgba(255, 255, 255, 0.1); /* Subtle glass line */
-  --primary: var(--accent-color); /* Use accent color */
+  --white: var(--text-color-primary); /* Use new root variables */
+  --paragraph: var(--text-color-secondary);
+  --line: rgba(255, 255, 255, 0.15); /* Slightly more visible line */
 
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
+  gap: 1.2rem; /* Slightly more spacing */
+  padding: 2.5rem; /* More generous padding */
   width: 25rem;
-  max-width: 90%; /* Responsive */
+  max-width: 90%;
+  box-sizing: border-box; /* Crucial for consistent sizing */
 
-  /* --- GLASSMORPHISM --- */
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  /* --- STRONGER GLASSMORPHISM --- */
+  background: var(--glass-bg-lighter); /* Use lighter glass background */
+  backdrop-filter: blur(25px); /* Much stronger blur */
+  -webkit-backdrop-filter: blur(25px);
   border: var(--glass-border);
-  border-radius: 1rem;
+  border-radius: 1.5rem; /* More rounded corners */
   box-shadow: var(--glass-shadow);
 
   margin-bottom: 2rem;
@@ -155,35 +180,70 @@ a {
 }
 
 /* Modern Card Buttons */
-.card .button,
-.card .category {
+.card .button {
   cursor: pointer;
-  padding: 0.75rem;
+  padding: 0.9rem 1.5rem; /* More padding */
   width: 100%;
-  background: var(--accent-color);
-  font-size: 0.9rem;
-  color: var(--background-dark);
+  background: var(--button-color); /* Use new button color */
+  font-size: 1rem; /* Slightly larger font */
+  color: var(--button-text-color); /* Dark text for light button */
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  border: 0;
-  border-radius: 8px; /* Modern radius */
-  transition: background-color 0.3s ease;
-  box-shadow: none; /* Removed old shadow */
+  border: none; /* No border for primary buttons */
+  border-radius: 10px; /* More modern radius */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 .card .button:hover {
-  background-color: var(--accent-color-light);
+  background-color: var(--button-hover-color);
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Secondary Button Style */
 .card .category {
+  cursor: pointer;
+  padding: 0.9rem 1.5rem;
+  width: 100%;
   background: transparent;
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--accent-color); /* Subtle accent border */
   color: var(--accent-color);
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .card .category:hover {
-  background: rgba(0, 170, 255, 0.1);
+  background: rgba(0, 170, 255, 0.15); /* More transparent hover */
+  border-color: var(--accent-color-light);
+  color: var(--accent-color-light);
+}
+
+/* ... other styles ... */
+
+.neon-button { /* Use for input buttons */
+  background: var(--button-color);
+  border: none;
+  color: var(--button-text-color);
+  padding: 12px 25px; /* More padding */
+  margin: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Consistent shadow */
+  border-radius: 10px;
+}
+
+.neon-button:hover {
+  background: var(--button-hover-color);
+  color: var(--button-text-color);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
 /* --- DISCORD TOOLTIP (Corrected Positioning) --- */
@@ -207,10 +267,10 @@ a {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--accent-color); /* Blue circle */
-  fill: var(--background-dark); /* Icon color */
-  border: 1px solid var(--accent-color-light);
-  box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+  background-color: var(--button-color); /* Use button color for consistency */
+  fill: var(--button-text-color); /* Dark text for light icon */
+  border: 1px solid var(--button-hover-color); /* Lighter border */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtler shadow */
   transition: transform 0.3s ease;
   z-index: 10; /* Keep icon above popup */
 }
@@ -272,24 +332,29 @@ a {
 }
 
 .neon-input {
-  background: rgba(0, 0, 0, 0.2); /* Dark glass */
-  border: var(--glass-border);
-  color: var(--accent-color); /* Accent color for the command text */
-  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.08); /* Lighter, more transparent input background */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtler border */
+  color: var(--text-color-primary); /* Primary text color for input */
+  padding: 12px 18px;
   margin: 5px 0;
   width: 80%;
-  text-align: left; /* Better for reading commands */
-  font-size: 0.9rem;
-  font-family: 'Courier New', Courier, monospace; /* Keep code-like */
-  box-shadow: none; /* Removed neon glow */
-  border-radius: 8px;
+  text-align: left;
+  font-size: 1rem; /* Slightly larger font */
+  font-family: 'Roboto Mono', monospace; /* A common, clean monospace font, remember to import it */
+  border-radius: 10px; /* More rounded corners */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neon-input::placeholder { /* Style for placeholder text */
+  color: var(--text-color-secondary);
+  opacity: 0.7;
 }
 
 .neon-input:focus {
   outline: none;
   border-color: var(--accent-color);
-  box-shadow: 0 0 10px rgba(0, 170, 255, 0.5); /* Subtle focus glow */
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4); /* More prominent focus glow */
+  background: rgba(255, 255, 255, 0.12); /* Slightly lighter on focus */
 }
 
 .neon-button {
@@ -314,55 +379,55 @@ a {
 }
 
 /* --- MODERN GLASS COLLAPSIBLE SECTIONS --- */
+.collapsible-section { /* <<<--- Make sure this rule is included ---<<< */
+    margin-bottom: 15px; /* Add some space between sections */
+    box-shadow: var(--glass-shadow); /* Apply shadow to the whole section */
+    border-radius: 1.5rem; /* Match card radius */
+    overflow: hidden; /* Crucial to contain rounded corners */
+}
+
 .collapsible {
-  background: var(--glass-bg);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: var(--glass-bg-darker); /* Use slightly darker glass background */
+  backdrop-filter: blur(10px); /* Medium blur for collapsible headers */
+  -webkit-backdrop-filter: blur(10px);
   color: var(--text-color-primary);
   cursor: pointer;
-  padding: 15px 20px;
+  padding: 18px 25px; /* More padding */
   width: 100%;
-  border: var(--glass-border);
-  border-top: none; /* Avoid double borders */
-  text-align: center; /* <<<--- ADD THIS LINE ---<<< */
+  border: none; /* No individual border, let section handle it */
+  text-align: center; /* Centered text */
   outline: none;
-  font-size: 1.1rem;
+  font-size: 1.15rem; /* Slightly larger font */
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-bottom: var(--glass-border); /* Separator line */
 }
 
-/* ... (rest of the collapsible styles remain the same) ... */
-
-/* Round the top corners of the first button */
-.collapsible-section:first-of-type .collapsible {
-  border-top: var(--glass-border);
-  border-radius: 8px 8px 0 0;
-}
-
-/* Round the bottom corners of the last button IF it's not active */
+/* Remove old individual border-radius rules, overflow:hidden on section handles it */
+.collapsible-section:first-of-type .collapsible,
 .collapsible-section:last-of-type .collapsible:not(.active) {
-  border-radius: 0 0 8px 8px;
+    border-radius: 0; /* Handled by parent */
 }
 
 .active,
 .collapsible:hover {
-  background: rgba(40, 50, 70, 0.5); /* Darker glass on hover/active */
+  background: rgba(255, 255, 255, 0.15); /* Lighter hover/active state */
+  color: var(--accent-color-light); /* Accent color for active/hovered text */
 }
 
 .content {
-  padding: 15px 18px;
+  padding: 15px 25px; /* Match padding */
   display: none;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3); /* Dark transparent bg */
-  border-left: var(--glass-border);
-  border-right: var(--glass-border);
+  background-color: rgba(0, 0, 0, 0.2); /* Darker transparent background for content */
+  /* Remove individual borders, let section and collapsible border handle it */
+  border: none;
 }
 
-/* Round the bottom corners of the last content box */
+/* Remove old individual border-radius rules */
 .collapsible-section:last-of-type .content {
-  border-bottom: var(--glass-border);
-  border-radius: 0 0 8px 8px;
+    border-radius: 0; /* Handled by parent */
 }
 
 /* --- RESPONSIVE LAYOUT --- */
@@ -384,5 +449,6 @@ a {
     margin: 5px 0 5px 10px;
   }
 }
+
 
 
