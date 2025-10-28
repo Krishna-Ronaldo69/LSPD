@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corrupt Commands</title> <!-- Assuming this was the title for others.html based on previous context -->
+    <title>RP Command Guide - Other</title> <!-- Updated Title -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container"> <!-- Main container for centering -->
         <div class="card">
             <div class="card__border"></div>
             <div class="card_title__container">
@@ -46,46 +46,44 @@
                 Krishnaronaldo
             </span>
         </div>
-        <style>
-            .container{
-                height: auto;
-            }
-        </style>
-    </div>
-    <!-- Assuming the content for "Other Commands" starts here -->
-    <h1>Other Useful Commands</h1>
-     <div class="collapsible-section">
-        <button class="collapsible">Basic Actions</button>
-        <div class="content">
-            <div class="neon-container">
-                <input type="text" id="textBox1" value="/me locks the doors." readonly class="neon-input">
-                <button onclick="copyText('textBox1', this)" class="neon-button">Copy</button>
-            </div>
-            <div class="neon-container">
-                <input type="text" id="textBox2" value="/me unlocks the doors." readonly class="neon-input">
-                <button onclick="copyText('textBox2', this)" class="neon-button">Copy</button>
-            </div>
-             <div class="neon-container">
-                <input type="text" id="textBox_newsiren" value="/newsiren" readonly class="neon-input">
-                 <button onclick="copyText('textBox_newsiren', this)" class="neon-button">Copy</button>
-             </div>
-        </div>
-    </div>
-     <div class="collapsible-section">
-        <button class="collapsible">Bodycam/Search Related</button>
-        <div class="content">
-            <div class="neon-container">
-                <input type="text" id="textBox3" value="/try search for bodycam." readonly class="neon-input">
-                <button onclick="copyText('textBox3', this)" class="neon-button">Copy</button>
-            </div>
-            <div class="neon-container">
-                <input type="text" id="textBox4" value="/do breaks the bodycam." readonly class="neon-input">
-                <button onclick="copyText('textBox4', this)" class="neon-button">Copy</button>
+
+        <!-- Moved H1 and Collapsible Sections inside .container -->
+        <h1>Other Useful Commands</h1>
+        <div class="collapsible-section">
+            <button class="collapsible">Basic Actions</button>
+            <div class="content">
+                <div class="neon-container">
+                    <input type="text" id="textBox1" value="/me locks the doors." readonly class="neon-input">
+                    <button onclick="copyText('textBox1', this)" class="neon-button">Copy</button>
+                </div>
+                <div class="neon-container">
+                    <input type="text" id="textBox2" value="/me unlocks the doors." readonly class="neon-input">
+                    <button onclick="copyText('textBox2', this)" class="neon-button">Copy</button>
+                </div>
+                 <div class="neon-container">
+                    <input type="text" id="textBox_newsiren" value="/newsiren" readonly class="neon-input">
+                     <button onclick="copyText('textBox_newsiren', this)" class="neon-button">Copy</button>
+                 </div>
             </div>
         </div>
-    </div>
-    <!-- Add more collapsible sections and commands as needed -->
+         <div class="collapsible-section">
+            <button class="collapsible">Bodycam/Search Related</button>
+            <div class="content">
+                <div class="neon-container">
+                    <input type="text" id="textBox3" value="/try search for bodycam." readonly class="neon-input">
+                    <button onclick="copyText('textBox3', this)" class="neon-button">Copy</button>
+                </div>
+                <div class="neon-container">
+                    <input type="text" id="textBox4" value="/do breaks the bodycam." readonly class="neon-input">
+                    <button onclick="copyText('textBox4', this)" class="neon-button">Copy</button>
+                </div>
+            </div>
+        </div>
+        <!-- Add more collapsible sections and commands as needed -->
+
+    </div> <!-- End .container -->
 
 <script src="./script.js"></script>
 </body>
 </html>
+
